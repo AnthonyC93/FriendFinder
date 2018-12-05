@@ -1,0 +1,41 @@
+body{
+    color:#4C4952;
+    background-color: #ECC9C7;
+}
+.thumb{
+    display:none;
+}
+.card{
+    /* background-color:#A34661; */
+    margin-top: 50px;
+    background-color: white;
+}
+.material-icons{
+    color:#4C4952;
+}
+
+h3{
+    color:white;
+    font-size:20px;
+    vertical-align: text-bottom;
+}
+.card-content{
+    opacity:1;
+}
+.questionLocation{
+    margin-top:20px;
+}
+.sliderLocation{
+    margin:20px 0px;
+}
+#backLink{
+    display:none;
+}
+.statusRowTop{
+    margin:0px;
+    /* background-color: rgb(83, 15, 122); */
+    background-color: #A34661;
+    height:10px;
+    float:left;
+    width:10%;
+}
