@@ -2,7 +2,7 @@
 var path = require("path");
 var express = require("express");
 var app = express();
-var PORT = 4000;
+var PORT = process.env.PORT || 4000;
 
 var htmlRoutes = require("./app/routing/htmlRoutes");
 var apiRoutes = require("./app/routing/apiRoutes");
