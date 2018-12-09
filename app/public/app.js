@@ -97,9 +97,14 @@ var userAnswers = {
   scores: []
 };
 $(document).ready(function(){
-  $('.modal').modal();
+  $('.modal').modal({
+    onCloseStart:function(){
+      //function to take user back to home page. prevents multiple entries of same person since friendList.indexOf() doesn't work to check on backend
+      //user would need to remember exactly how they answered survey to re-enter same info.
+      window.location.href="/";
+    }
+  });
 });
-calculateResults();
 
 function startSurvey() {
   //validate and save to userAnswers
@@ -255,32 +260,3 @@ $('#submitButton').on('click',function(){
 
   });
 })
-
-function calculateResults(){
-  let demo1 = {
-    name: "",
-    occupation:"",
-    age:"",
-    photo: "",
-    scores: [1,2,3,4,5,4,3,2,1,3]
-  };
-
-  let existing = {
-    name: "",
-    occupation:"",
-    age:"",
-    photo: "",
-    scores: [4,2,5,2,1,2,4,2,1,2]
-  };
-
-  let differences=[];
-  let differenceScore=0;
-  
-  for(let i=0;i<existing.scores.length;i++){
-    let result = Math.abs(existing.scores[i]-demo1.scores[i]);
-    if(result!=0){
-      differences.push(result);
-      differenceScore+=result;
-    }
-  }
-}
