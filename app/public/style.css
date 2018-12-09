@@ -29,8 +29,8 @@ h3{
 /* .card-content{
     opacity:1;
 } */
-.sliderLocation{
-    margin:20px 0px;
+.sliderRow{
+    margin:0;
 }
 #backLink{
     display:none;
@@ -46,15 +46,28 @@ h3{
 .s2{
     height:100%;
 }
-
-#startSurvey,#start,#backLink,#nextLink{
+h2{
+    margin:1.424rem 0 1.424rem 0;
+}
+#startSurvey,#start,#backLink,#nextLink,#submitButton{
   width:100%;
   background-color:#A34661;
   font-size:150%;
   font-weight:bold;
 }
 
+button{
+    color:#A34661;
+}
+
 #submitButton{
   position:relative;
   bottom:0;
+}
+.feedbackRow{
+    margin-bottom: 40px;
+}
+
+.material-icons{
+    color:white;
 }

@@ -9,9 +9,9 @@ var questionsToAsk = [
   {
     id: 0,
     question: "How likely are you to want kids in the future?",
-    low: "not very likely",
-    medium: "somewhat likely",
-    high: "very likely",
+    low: "no thanks",
+    medium: "I have no idea",
+    high: "I can't wait to be a parent",
     score:0
   },
   {
@@ -81,10 +81,10 @@ var questionsToAsk = [
   },
   {
     id: 9,
-    question: "WHY THO",
-    low: "not very",
-    medium: "somewhat",
-    high: "Africa by Toto is my ringtone",
+    question: "How would you rate this site's design?",
+    low: "trash",
+    medium: "it's ok",
+    high: "I really like it",
     score:0
   }
 ];
@@ -96,16 +96,18 @@ var userAnswers = {
   photo: "",
   scores: []
 };
-
+$(document).ready(function(){
+  $('.modal').modal();
+});
 calculateResults();
 
 function startSurvey() {
   //save name/age/occuapation/photo 
+  console.log("starting survey");
   userAnswers.name=document.getElementById("name").value;
   userAnswers.occupation=document.getElementById("occupation").value;
   userAnswers.age=parseInt(document.getElementById("age").value);
   userAnswers.photo=document.getElementById("photoLink").value;
-  console.log(userAnswers);
   nextQuestion();
   document.getElementById("infoCard").style.display="none";
   document.getElementById("surveyCard").style.display="block";
@@ -198,8 +200,8 @@ function updateStatusBar() {
   statusBar.style.width = (currentQuestion+1) + "0" + "%";
 }
 
-function submitSurvey(){
-  
+$('#submitButton').on('click',function(){
+  console.log("submit pressed!")
   if(currentQuestion===9){
     questionsToAsk[currentQuestion].score=parseInt(slider.value);    
   }
@@ -210,16 +212,20 @@ function submitSurvey(){
      scoresToSend.push(questionsToAsk[i].score)
   }
   userAnswers.scores=scoresToSend;
-  console.log(userAnswers);
 
   // POST to server
   $.post('/api/friends', userAnswers)
     .then(function(data) {
-      console.log(data);
+      // console.log(data);
       //open materialize modal
-  });
 
-}
+      $('#matchName').html(data.name);
+      $('#matchPhoto').attr('src',data.photo);
+      $('#matchOccupation').html(data.occupation);
+      $('#matchAge').html(data.age);
+
+  });
+})
 
 function calculateResults(){
   let demo1 = {

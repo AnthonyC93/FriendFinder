@@ -19,14 +19,13 @@ router.get("/friends",function(req,res){
 router.post("/friends",function(req,res){
    let newUser = req.body;
    console.log(newUser);
-   console.log(friendList);
-
+   
+   res.json(calculateResults(newUser));
    friendList.push(newUser);
    
+   console.log(friendList);
     //       res.sendFile('')
     // res.sendFile(path.join(__dirname, "./../public/home.html"));
-  
-    res.json(calculateResults(newUser));
 });
 
 function calculateResults(newUser){
@@ -57,7 +56,6 @@ function calculateResults(newUser){
         }
         console.log("difference score: "+differenceScore);
     }
-    console.log(differenceScore);
     return matchedUser;
 }
 

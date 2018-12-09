@@ -14,15 +14,21 @@
 <body>
     <div id="modal1" class="modal">
         <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
+          <h3>Best Match</h3>
+          <div class='divider'></div>
+          <div class='section'>
+            <h3 id='matchName'></h3>
+            <h4 id='matchAge'></h4>
+            <h4 id='matchOccupation'></h4>
+            <img class='responsive-img' id='matchPhoto' src=''>
+          </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
   <div class='container'>
-    <form>
+    <form action="/api/friends">
       <div id='infoCard'class='card hoverable'>
          <div class='card-content'>
           <div class='container'>
@@ -96,43 +102,30 @@
           <div class='container'>
            <div class='card-content'>
               <div class='row'>
-                <div class='col s9 questionLocation left-align'>
-                  <h2 id='questionOnPage'></h2>
-                </div>
-                <div class='col s3 right-align'>
-                  <!-- <div class='row'>
-                    <div class='col s12'> -->
-                        <h1 id='currentChoice'></h1>
-                        <p id='suffix'></p>
-                        <!-- </div>
-                    </div>
-                  <div class='row'>
-                      <div class='col s12'>
-                          <p id='suffix'></p>
-                      </div>
-                  </div> -->
+                <div class='col s12 questionLocation left-align'>
+                  <h3 id='questionOnPage'></h3>
                 </div>
               </div>
 
-              <div class='row'>
-                <div class='col s12 sliderLocation'>
+              <div class='row sliderRow'>
+                <div class='col s12'>
                   <input id='slider' oninput="javascript:sliderMoved();" type="range" id="" min="1" max="5" />
                 </div>
               </div>
-              <!-- <div class='row'>
+
+              <div class='row feedbackRow'>
                 <div id='feedbackRow' class='col s12 center-align'>
-                    <h3 id='currentChoice'></h3>
+                    <h2 id='currentChoice'></h2>
                     <p id='suffix'></p>
                 </div>
-              </div> -->
+              </div>
               <div class='row'>
                   <div class='col s6 left-align'>
-                    <a id='backLink' href="javascript:previousQuestion();" class='btn-large waves-effect'><i class="large material-icons">navigate_before</i></a>
+                    <a id='backLink' href="javascript:previousQuestion();" class='btn-large waves-effect'><i class="large material-icons">arrow_back</i></a>
                   </div>
                   <div class='col s6 right-align'>
-                    <a href="javascript:nextQuestion();" id='nextLink' class='btn-large waves-effect'><i class="large material-icons">navigate_next</i></a>
-                    <a href="javascript:submitSurvey();" id="submitButton" class="btn-large waves-effect waves-light">Find My Match
-                    </a>
+                    <a href="javascript:nextQuestion();" id='nextLink' class='btn-large waves-effect'><i class="large material-icons">arrow_forward</i></a>
+                    <button data-target='modal1' href="javascript:submitSurvey();" id="submitButton" class="btn-large waves-effect waves-light modal-trigger">Find My Match</button>
                   </div>
               </div>
             </div>
