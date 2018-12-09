@@ -1,70 +1,148 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script> -->
-        <link type="text/css" rel="stylesheet" href="./../style.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </head>
-    <body>
-        <div class='container'>
-            <form>
-                <div class='card hover'>
-                    <div class='statusRowTop row'></div>
-                    <div class='card-content'>
-                            <div class='container'>
-                                    <div class='row'>
-                                        <div class='col s12 questionLocation center'>
-                                            <h2 id='questionOnPage'>insert question here</h2>
-                                        </div>
-                                    </div>
-                                    <div class='row'>
-                                    <div class='col s12 sliderLocation'>
-                                        <input id='slider'oninput="javascript:sliderMoved();" type="range" id="" min="1" max="5" />
-                                    </div>
-                                    </div>
-                                    <div class='row'>
-                                        <!-- <div class='col s2 backButtonLocation left-align'>
-                                                <i class="large material-icons">navigate_before</i>
-                                        </div>
-                                        <div class='col s8 center-align'>
-                                            <h3 class='pageCounterLocation'>1</h3>
-                                        </div>
-                                        <div class='col s2 nextLocation right-align'>
-                                                <i class="large material-icons">navigate_next</i>
-                                        </div>-->
-                                        <div class='col s5 left-align'>
-                                            <a id='backLink' onClick='previousQuestion()'><i class="large material-icons">navigate_before</i></a>
-                                        </div>
-                                        <div class='col s2 center-align'>
-                                            <div class='row'>
-                                                <div class='col s12'>
-                                                    <h3 id='currentChoice'></h3>
-                                                </div>
-                                            </div>
-                                            <div class='row'>
-                                                <div class='col s12'>
-                                                    <p id='suffix'>not very likely</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='col s5 right-align'>
-                                            <a href="javascript:nextQuestion();" id='nextLink'><i class="large material-icons">navigate_next</i></a>
-                                        </div>
-                                    </div>
-                            </div>
-                    </div>
-                    <div class='statusCol'></div>
-                </div>
-            </form>
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+  <link type="text/css" rel="stylesheet" href="./style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
         </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+  <div class='container'>
+    <form>
+      <div id='infoCard'class='card hoverable'>
+         <div class='card-content'>
+          <div class='container'>
+              <div class='row'>
+                <h2 class='center'>lets get to know you</h2>
+                 <div class="input-field col s9">
+                   <input id="name" type="text" class="validate">
+                   <label for="name">Name</label>
+                 </div>
+                 <div class="input-field col s3">
+                   <input id="age" type="text" class="validate">
+                   <label for="age">Age</label>
+                 </div>
+              </div>
+              <div class=row>
+                   <div class="input-field col s12">
+                     <input id="occupation" type="text" class="validate">
+                     <label for="occupation">Occupation</label>
+                   </div>
+                </div>
+              <div class='row'>
+                 <div class="input-field col s12">
+                       <input id="photoLink" type="text" class="validate">
+                       <label for="photoLink">Link To Photo</label>
+                  </div>
+              </div>
+              <div class='row'>
+                <div class='col s12'>
+                   <a href="javascript:startSurvey();" id='startSurvey' class="waves-effect waves-light btn-large">Start Survey</a>
+                </div>
+              </div>
+           </div>
+        </div>
+      </div>
+      
+      <!-- <div id='surveyCard'class='card hoverable'>
+        <div class='statusRowTop row'></div>
+        <div class='card-content'>
+          <div class='container'>
+            <div class='row'>
+              <div class='col s12 questionLocation center'>
+                <h2 id='questionOnPage'></h2>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col s12 sliderLocation'>
+                <input id='slider' oninput="javascript:sliderMoved();" type="range" id="" min="1" max="5" />
+              </div>
+            </div>
+            <div class='row'>
+              <div id='feedbackRow' class='col s12 center-align'>
+                  <h3 id='currentChoice'></h3>
+                  <p id='suffix'></p>
+              </div>
+            </div>
+            <div class='row'>
+                <div class='col s6 left-align'>
+                  <a id='backLink' href="javascript:previousQuestion();" class='btn-large waves-effect'><i class="large material-icons">navigate_before</i></a>
+                </div>
+                <div class='col s6 right-align'>
+                  <a href="javascript:nextQuestion();" id='nextLink' class='btn-large waves-effect'><i class="large material-icons">navigate_next</i></a>
+                  <a href="javascript:submitSurvey();" id="submitButton" class="btn-large waves-effect waves-light">Find My Match
+                  </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div id='surveyCard'class='card hoverable'>
+          <div class='statusRowTop row'></div>
+          <div class='container'>
+           <div class='card-content'>
+              <div class='row'>
+                <div class='col s9 questionLocation left-align'>
+                  <h2 id='questionOnPage'></h2>
+                </div>
+                <div class='col s3 right-align'>
+                  <!-- <div class='row'>
+                    <div class='col s12'> -->
+                        <h1 id='currentChoice'></h1>
+                        <p id='suffix'></p>
+                        <!-- </div>
+                    </div>
+                  <div class='row'>
+                      <div class='col s12'>
+                          <p id='suffix'></p>
+                      </div>
+                  </div> -->
+                </div>
+              </div>
 
+              <div class='row'>
+                <div class='col s12 sliderLocation'>
+                  <input id='slider' oninput="javascript:sliderMoved();" type="range" id="" min="1" max="5" />
+                </div>
+              </div>
+              <!-- <div class='row'>
+                <div id='feedbackRow' class='col s12 center-align'>
+                    <h3 id='currentChoice'></h3>
+                    <p id='suffix'></p>
+                </div>
+              </div> -->
+              <div class='row'>
+                  <div class='col s6 left-align'>
+                    <a id='backLink' href="javascript:previousQuestion();" class='btn-large waves-effect'><i class="large material-icons">navigate_before</i></a>
+                  </div>
+                  <div class='col s6 right-align'>
+                    <a href="javascript:nextQuestion();" id='nextLink' class='btn-large waves-effect'><i class="large material-icons">navigate_next</i></a>
+                    <a href="javascript:submitSurvey();" id="submitButton" class="btn-large waves-effect waves-light">Find My Match
+                    </a>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </form>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="./../app.js"></script>
-    </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+</body>
+
 </html>

@@ -16,3 +16,42 @@
 //         1
 //       ]
 //   }
+
+var friendList=[
+    {
+        name:"anthony",
+        age:25,
+        occupation:"software developer",
+        photo:"photo.com",
+        scores:[4,3,2,4,2,5,2,4,1,3]
+    },
+    {
+        "name": "tony",
+        "age": 34,
+        "occupation": "IT",
+        "photo": "photo.com",
+        "scores": [
+            2,
+            5,
+            2,
+            2,
+            5,
+            1,
+            1,
+            1,
+            4,
+            3
+        ]
+    },
+    {
+        name:"samantha",
+        age:23,
+        occupation:"work",
+        photo:"whoCares.jpg",
+        scores:[1,2,3,4,5,4,3,2,1,2]
+    }
+];
+
+module.exports={
+    friendList:friendList
+}

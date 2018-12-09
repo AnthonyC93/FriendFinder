@@ -5,10 +5,18 @@ body{
 .thumb{
     display:none;
 }
+#submitButton,#surveyCard{
+    display:none;
+}
 .card{
     /* background-color:#A34661; */
     margin-top: 50px;
     background-color: white;
+}
+
+#infoCard{
+  margin-top: 50px;
+  background-color:white;
 }
 .material-icons{
     color:#4C4952;
@@ -18,12 +26,9 @@ h3{
     color:#4C4952;
     vertical-align: text-bottom;
 }
-.card-content{
+/* .card-content{
     opacity:1;
-}
-.questionLocation{
-    margin-top:20px;
-}
+} */
 .sliderLocation{
     margin:20px 0px;
 }
@@ -36,5 +41,20 @@ h3{
     background-color: #A34661;
     height:10px;
     float:left;
-    width:10%;
+    width:0%;
+}
+.s2{
+    height:100%;
+}
+
+#startSurvey,#start,#backLink,#nextLink{
+  width:100%;
+  background-color:#A34661;
+  font-size:150%;
+  font-weight:bold;
+}
+
+#submitButton{
+  position:relative;
+  bottom:0;
 }
