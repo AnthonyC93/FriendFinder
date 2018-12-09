@@ -14,20 +14,9 @@ router.post("/friends",function(req,res){
    let newUser = req.body;
    
    res.json(calculateResults(newUser));
-   console.log(existsInFriendList(newUser));
-   if(friendList.indexOf(newUser)===-1){
-       friendList.push(newUser);
-   }
+   friendList.push(newUser);
 });
 
-function existsInFriendList(userToTest){
-    for(let i=0;i<friendList.length;i++){
-        if(friendList[i]==userToTest){
-            return true;
-        }
-    }
-    return false;
-}
 function calculateResults(newUser){
 
     let matchedUser=friendList[0];
