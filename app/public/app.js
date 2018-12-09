@@ -102,15 +102,50 @@ $(document).ready(function(){
 calculateResults();
 
 function startSurvey() {
-  //save name/age/occuapation/photo 
-  console.log("starting survey");
-  userAnswers.name=document.getElementById("name").value;
-  userAnswers.occupation=document.getElementById("occupation").value;
-  userAnswers.age=parseInt(document.getElementById("age").value);
-  userAnswers.photo=document.getElementById("photoLink").value;
-  nextQuestion();
-  document.getElementById("infoCard").style.display="none";
-  document.getElementById("surveyCard").style.display="block";
+  //validate and save to userAnswers
+
+  let goodToGo=false;
+  let needAlert=false;
+  let alertString='';
+  let nameEntered=document.getElementById("name").value.trim();
+  let occuapationEntered=document.getElementById("occupation").value.trim();
+  let ageEntered=parseInt(document.getElementById("age").value.trim());
+  let photoEntered=document.getElementById("photoLink").value.trim();
+
+  if(nameEntered && occuapationEntered && ageEntered &&photoEntered){
+
+    let fileType = photoEntered.substring(photoEntered.length-4,photoEntered.length);
+
+    if(fileType!=".jpg"&&fileType!='.png'&&fileType!='jpeg'&&fileType!='.tif'&&fileType!='tiff'&&fileType!='.bmp'&&fileType!='.gif'){
+       needAlert=true;
+       alertString+="- Invalid photo link\nFile must end in .jpg, .jpeg, .png, etc...";
+    }else{
+      goodToGo=true;
+    }
+
+  }else{
+    needAlert=true;
+    alertString+="- Invalid/Missing fields";
+
+    if(isNaN(ageEntered)){
+      needAlert=true;
+      alertString+="\n\n- Invalid Age"
+    }
+  }
+
+  if(needAlert===true){
+    alert(alertString);
+  }
+
+  if(goodToGo===true){
+    userAnswers.name=nameEntered;
+    userAnswers.occupation=occuapationEntered;
+    userAnswers.age=ageEntered;
+    userAnswers.photo=photoEntered;
+    nextQuestion();
+    document.getElementById("infoCard").style.display="none";
+    document.getElementById("surveyCard").style.display="block";
+  }
 }
 
 function nextQuestion() {
