@@ -1,31 +1,20 @@
-// should contain two routes:
 var express = require('express');
 var path = require('path');
 var router = express.Router();
-
 var friendList = require('./../data/friends').friendList;
-console.log("current list is: "+friendList);
-console.log("friendList is above me");
-
 
 // A GET route with the url /api/friends. This will be used to display a JSON of all possible friends.
-// A POST routes /api/friends. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
-
 router.get("/friends",function(req,res){
     return res.json(friendList);
     // return res.json(friendList);
 });
 
+// A POST routes /api/friends. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
 router.post("/friends",function(req,res){
    let newUser = req.body;
-   console.log(newUser);
    
    res.json(calculateResults(newUser));
    friendList.push(newUser);
-   
-   console.log(friendList);
-    //       res.sendFile('')
-    // res.sendFile(path.join(__dirname, "./../public/home.html"));
 });
 
 function calculateResults(newUser){

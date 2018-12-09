@@ -149,7 +149,6 @@ function startSurvey() {
 }
 
 function nextQuestion() {
-  // console.log("time to show next question");
  
   if(currentQuestion!=-1){
     questionsToAsk[currentQuestion].score=parseInt(slider.value);    
@@ -189,10 +188,8 @@ function previousQuestion() {
 }
 
 function changeCard() {
-  console.log("this question is: "+currentQuestion)
   if(questionsToAsk[currentQuestion].score!=0){
     //this question has been answered already
-    console.log("this question has been answered already");
     slider.value=questionsToAsk[currentQuestion].score;
     currentChoice.innerHTML=slider.value;
   }else{
@@ -236,7 +233,6 @@ function updateStatusBar() {
 }
 
 $('#submitButton').on('click',function(){
-  console.log("submit pressed!")
   if(currentQuestion===9){
     questionsToAsk[currentQuestion].score=parseInt(slider.value);    
   }
@@ -251,8 +247,6 @@ $('#submitButton').on('click',function(){
   // POST to server
   $.post('/api/friends', userAnswers)
     .then(function(data) {
-      // console.log(data);
-      //open materialize modal
 
       $('#matchName').html(data.name);
       $('#matchPhoto').attr('src',data.photo);
@@ -289,6 +283,4 @@ function calculateResults(){
       differenceScore+=result;
     }
   }
-  console.log(differences);
-  console.log(differenceScore);
 }
