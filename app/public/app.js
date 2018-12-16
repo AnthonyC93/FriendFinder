@@ -238,6 +238,7 @@ function updateStatusBar() {
 }
 
 $('#submitButton').on('click',function(){
+  event.preventDefault();
   if(currentQuestion===9){
     questionsToAsk[currentQuestion].score=parseInt(slider.value);    
   }
